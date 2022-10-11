@@ -10,6 +10,16 @@ import {ethers} from "ethers";
 import {Box, Button, Image} from '@chakra-ui/react';
 
 function App() {
+  const [account, setAccount] = useState(null);
+  const [profiles, setProfiles] = useState([]);
+  const [posts, setPosts] = useState([]);
+
+  const signIn = async () => {
+    const accounts = await window.ethereum.request({
+      method: "eth_questAccounts",
+    });
+  }
+
   return (
     <div className="app">
 
