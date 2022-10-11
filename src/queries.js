@@ -463,6 +463,4 @@ fragment ReferenceModuleFields on ReferenceModule {
     degreesOfSeparation
   }
 }
-
-
 `;
