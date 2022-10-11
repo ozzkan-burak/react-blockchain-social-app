@@ -18,7 +18,15 @@ function App() {
     const accounts = await window.ethereum.request({
       method: "eth_questAccounts",
     });
+    setAccount(accounts[0]);
   }
+
+ const getRecommendedProfiles = async () => {
+  const response = await urlClinet.query(queryRecommendedProfiles)
+    .toPromise();
+  const profiles = response.data.recommendedProfiles.slice(0,5);
+  setProfiles(profiles);
+ }
 
   return (
     <div className="app">
