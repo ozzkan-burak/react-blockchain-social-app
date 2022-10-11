@@ -28,6 +28,17 @@ function App() {
   setProfiles(profiles);
  }
 
+ const getPosts = async () => {
+  const response = await urlClinet.query(queryExplorePublications)
+    .toPromise();
+
+  const posts = response.data.explorePublications.items.filter((post) => {
+    if(post.profile) return post;
+    return "";
+  });
+  setPosts(posts);
+ }
+
   return (
     <div className="app">
 
