@@ -57,7 +57,31 @@ function App() {
 
   return (
     <div className="app">
-
+      <Box width="100%" backgroundColor="regb(5,32,64,28)">
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+          width="55%"
+          margin="auto"
+          color="white"
+          paddin="10px 0"
+        >
+          <Box>
+            <Box fontFamily="DM Serif Display" fontSize="44px" fontStyle="italic">
+              MerkeziSiz
+            </Box>
+            <Box>Merkeziyetsiz Sosyal Medya Uygulaması</Box>
+            {
+              account ? (
+                <Box backgrounColor="000" padding="15px" borderRadius="6pc">
+                  Bağlandı
+                </Box>
+              ) : <Button onClick={signIn} color="rgba(5,32,64)" _hover={{backgroundColor: "#080808"}}></Button>
+            }
+          </Box>
+        </Box>
+      </Box>
     </div>
   );
 }
