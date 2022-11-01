@@ -39,9 +39,49 @@ function App() {
   setPosts(posts);
  }
 
+ async function follow(id) {
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  const contract = new ethers.Contract(
+    LENS_HUB_CONTRACT_ADRESS,
+    LENS_HUB,
+    provider.getSigner()
+  );
+  const tx = await contract.follow([parseInt(id)]);
+  await tx.wait();
+ }
+
+ useEffect(()=> {
+  getRecommendedProfiles();
+  getPosts();
+ }, [])
+
   return (
     <div className="app">
-
+      <Box width="100%" backgroundColor="regb(5,32,64,28)">
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+          width="55%"
+          margin="auto"
+          color="white"
+          paddin="10px 0"
+        >
+          <Box>
+            <Box fontFamily="DM Serif Display" fontSize="44px" fontStyle="italic">
+              MerkeziSiz
+            </Box>
+            <Box>Merkeziyetsiz Sosyal Medya Uygulaması</Box>
+            {
+              account ? (
+                <Box backgrounColor="000" padding="15px" borderRadius="6pc">
+                  Bağlandı
+                </Box>
+              ) : <Button onClick={signIn} color="rgba(5,32,64)" _hover={{backgroundColor: "#080808"}}></Button>
+            }
+          </Box>
+        </Box>
+      </Box>
     </div>
   );
 }
