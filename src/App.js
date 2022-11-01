@@ -39,6 +39,22 @@ function App() {
   setPosts(posts);
  }
 
+ async function follow(id) {
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  const contract = new ethers.Contract(
+    LENS_HUB_CONTRACT_ADRESS,
+    LENS_HUB,
+    provider.getSigner()
+  );
+  const tx = await contract.follow([parseInt(id)]);
+  await tx.wait();
+ }
+
+ useEffect(()=> {
+  getRecommendedProfiles();
+  getPosts();
+ }, [])
+
   return (
     <div className="app">
 
