@@ -85,12 +85,42 @@ function App() {
               ) : <Button onClick={signIn} color="rgba(5,32,64)" _hover={{backgroundColor: "#080808", color:"white"}}>Giriş Yap</Button>
             }
         </Box>
-      </Box>
-      {/* ----- CONTENT ---- */}
 
-      <Box>
-        
       </Box>
+
+      {/* ----- CONTENT ---- */}
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        width="55%"
+        margin="35px auto auto auto"
+        color="white"
+      >
+
+        {/* ----- POSTS ---- */}
+        <Box width="65%" maxWidth="65%" minWidth="65%">
+            {posts.map((post)==>(
+              <Box
+                key={post.id}
+                marginBottom="25px"
+                backgrounColor="rgba(5, 32, 64 ,28)"
+                paddng="40xp 30px 30px 25px"
+                bırderRadius="6px"
+              ></Box>
+            ))
+
+            }
+        </Box>
+      
+        {/* ----- FRIEND SUGGEST ---- */}
+      
+        <Box>
+              
+        </Box>
+            
+      </Box>
+
+
     </div>
   );
 }
