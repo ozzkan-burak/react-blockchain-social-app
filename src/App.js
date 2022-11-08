@@ -14,6 +14,9 @@ function App() {
   const [profiles, setProfiles] = useState([]);
   const [posts, setPosts] = useState([]);
 
+  console.log(' ~ account', account);
+  console.log(' ~ profiles', profiles);
+
   const signIn = async () => {
     const accounts = await window.ethereum.request({
       method: "eth_questAccounts",
@@ -65,22 +68,28 @@ function App() {
           width="55%"
           margin="auto"
           color="white"
-          paddin="10px 0"
+          padding="10px 0"
         >
           <Box>
             <Box fontFamily="DM Serif Display" fontSize="44px" fontStyle="italic">
               MerkeziSiz
             </Box>
             <Box>Merkeziyetsiz Sosyal Medya Uygulaması</Box>
-            {
+
+          </Box>
+          {
               account ? (
                 <Box backgrounColor="000" padding="15px" borderRadius="6pc">
                   Bağlandı
                 </Box>
-              ) : <Button onClick={signIn} color="rgba(5,32,64)" _hover={{backgroundColor: "#080808"}}></Button>
+              ) : <Button onClick={signIn} color="rgba(5,32,64)" _hover={{backgroundColor: "#080808", color:"white"}}>Giriş Yap</Button>
             }
-          </Box>
         </Box>
+      </Box>
+      {/* ----- CONTENT ---- */}
+
+      <Box>
+        
       </Box>
     </div>
   );
