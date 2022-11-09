@@ -99,14 +99,24 @@ function App() {
 
         {/* ----- POSTS ---- */}
         <Box width="65%" maxWidth="65%" minWidth="65%">
-            {posts.map((post)==>(
+            {posts.map((post) =>(
               <Box
                 key={post.id}
                 marginBottom="25px"
                 backgrounColor="rgba(5, 32, 64 ,28)"
                 paddng="40xp 30px 30px 25px"
                 bırderRadius="6px"
-              ></Box>
+              >
+                <Box display="flex">
+                  {/* ----- PROFILE IMAGE ---- */}
+                  <Box width="75px" height="75px" marginTop="8px">
+                    <img />
+                  </Box>
+
+                  {/* ----- PROFILE IMAGE ---- */}
+                  <Box></Box>
+                </Box>
+              </Box>
             ))
 
             }
