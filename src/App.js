@@ -56,7 +56,20 @@ function App() {
  useEffect(()=> {
   getRecommendedProfiles();
   getPosts();
- }, [])
+ }, []);
+
+ const parseImageUrl = (post) => {
+  if(post.profile) {
+    const url = post.profile.picture?.orginal?.url;
+    if(url && url.starrtsWith("ipfs")) {
+      const ipfsHash = url.split("//")[1];
+      return `https://gateway.pinata.cloud/ipfs${ipfsHash}`;
+    }
+    return url;
+  }
+
+  return "/default-avatar.png"
+ };
 
   return (
     <div className="app">
@@ -110,7 +123,15 @@ function App() {
                 <Box display="flex">
                   {/* ----- PROFILE IMAGE ---- */}
                   <Box width="75px" height="75px" marginTop="8px">
-                    <img />
+                    <img 
+                      alt="profile"
+                      src={post.profile ? post.profile.picture?.orginal?.url : "/default-avatar.png"}
+                      width="75px" height="75px"
+                      onError={({currentTarget})=> {
+                        currentTarget.onerror = null
+                        currentTarget.src = "/default-avatar.png"
+                      }}
+                    />
                   </Box>
 
                   {/* ----- PROFILE IMAGE ---- */}
